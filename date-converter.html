@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Converter - Nepali Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://img.icons8.com/arcade/64/maintenance.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Date Converter</h1>
+            <p>Convert between Nepali Bikram Sambat (BS) and Gregorian (AD) calendar dates</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">
+                    <img src="https://img.icons8.com/stencil/32/exterior.png" class="nav-icon" alt="Home"> Home</a></li>
+                <li><a href="date-converter.html" class="active">
+                    <img src="https://img.icons8.com/fluency/48/calendar.png" class="nav-icon" alt="Date Converter"> Date Converter</a></li>
+                <li><a href="gold-prices.html">
+                    <img src="https://img.icons8.com/glassmorphism/48/exchange.png" class="nav-icon" alt="Gold Prices"> Gold Prices</a></li>
+                <li><a href="weather.html">
+                    <img src="https://img.icons8.com/color/48/partly-cloudy-day--v1.png" class="nav-icon" alt="Weather"> Weather</a></li>
+                <li><a href="forex.html">
+                    <img src="https://img.icons8.com/external-smashingstocks-outline-color-smashing-stocks/66/external-Forex-finance-smashingstocks-outline-color-smashing-stocks.png" class="nav-icon" alt="Forex"> Forex</a></li>
+                <li><a href="nepali-unicode.html">
+                    <img src="https://img.icons8.com/color/48/translation.png" class="nav-icon" alt="Unicode"> Unicode</a></li>
+            </ul>
+        </nav>
+
+        <div class="ad-container">
+            <h3>Advertisement</h3>
+            <div class="ad-placeholder">Your Ad Here (728x90)</div>
+        </div>
+
+        <div class="tool-container">
+            <div class="tool-header">
+                <img src="https://img.icons8.com/fluency/48/calendar.png" class="tool-header-icon" alt="Date Converter">
+                <h2>Date Converter</h2>
+            </div>
+            <iframe src="https://www.ashesh.com.np/linkdate-converter.php?h_color=21ADE2&b_color=CFE4B1&api=872030p289" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none; overflow:hidden; width:100%; height:186px;" allowtransparency="true"></iframe>
+        </div>
+
+        <div class="ad-container">
+            <h3>Advertisement</h3>
+            <div class="ad-placeholder large">Your Ad Here (970x250)</div>
+        </div>
+
+        <div class="contact-info">
+            <a href="https://wa.me/9803282511" target="_blank" title="Contact on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:sidbatala@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+        </div>
+
+        <footer>
+            <p>&copy; <span id="current-year"></span> Nepali Tools. Created by Siddha Batala.</p>
+            <p>All tools powered by Ashesh.com.np API services.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
