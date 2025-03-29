@@ -31,6 +31,14 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+}
+
+.time-widget {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
 }
 
 header {
@@ -429,6 +437,12 @@ footer {
         width: 20px;
         height: 20px;
         margin-right: 5px;
+    }
+    
+    .time-widget {
+        position: static;
+        text-align: center;
+        margin-bottom: 15px;
     }
 }
 
