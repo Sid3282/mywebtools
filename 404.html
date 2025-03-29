@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Nepali Tools</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Find useful Nepali tools like date converter, calendar, astrology, and more.">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4e54c8;
+            --secondary: #8f94fb;
+            --accent: #ff7e5f;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        /* Animation Styles */
+        .not-found-container {
+            perspective: 1000px;
+            margin: 50px 0;
+        }
+        
+        .not-found-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotateY(0deg);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: translateY(-20px) rotateY(5deg);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            }
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .home-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(78, 84, 200, 0.3);
+        }
+        
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(78, 84, 200, 0.4);
+        }
+        
+        .search-box {
+            margin: 30px 0;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(78, 84, 200, 0.2);
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            transform: scale(0.98);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding: 20px;
+            color: var(--dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating elements animation */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(78, 84, 200, 0.1);
+            border-radius: 50%;
+            animation: floatElement 15s infinite linear;
+        }
+        
+        @keyframes floatElement {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .not-found-card {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 4rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <!-- These will be generated by JavaScript -->
+    </div>
+    
+    <div class="container">
+        <div class="not-found-container">
+            <div class="not-found-card">
+                <div class="error-code">404</div>
+                <h1>Oops! Page Not Found</h1>
+                <p>The page you're looking for doesn't exist or has been moved. Try searching or return to the homepage.</p>
+                
+                <div class="search-box">
+                    <input type="text" placeholder="Search Nepali Tools...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <a href="index.html" class="home-btn">
+                    <i class="fas fa-home"></i> Return to Homepage
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Nepali Tools. Created by Siddha Batala.</p>
+        <p>All tools powered by Ashesh.com.np API services.</p>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Create floating elements
+        const floatingContainer = document.querySelector('.floating-elements');
+        const colors = ['rgba(78, 84, 200, 0.1)', 'rgba(143, 148, 251, 0.1)', 'rgba(255, 126, 95, 0.1)'];
+        
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            // Random properties
+            const size = Math.random() * 100 + 50;
+            const posX = Math.random() * window.innerWidth;
+            const delay = Math.random() * 15;
+            const duration = Math.random() * 10 + 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.left = `${posX}px`;
+            element.style.bottom = `-${size}px`;
+            element.style.animationDelay = `${delay}s`;
+            element.style.animationDuration = `${duration}s`;
+            element.style.background = color;
+            
+            floatingContainer.appendChild(element);
+        }
+        
+        // Search functionality
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const query = document.querySelector('.search-box input').value;
+            if (query.trim() !== '') {
+                alert('Search functionality would be implemented here. You searched for: ' + query);
+                // In a real implementation, you would redirect to search results
+                // window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+            }
+        });
+        
+        // Allow search on Enter key
+        document.querySelector('.search-box input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-box button').click();
+            }
+        });
+    </script>
+</body>
+</html>
