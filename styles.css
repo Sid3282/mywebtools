@@ -1,13 +1,20 @@
+/* ====== Global Styles ====== */
 :root {
     --primary: #4e54c8;
     --secondary: #8f94fb;
     --accent: #ff7e5f;
     --light: #f8f9fa;
     --dark: #343a40;
+    --darker: #212529;
+    --gray: #6c757d;
+    --light-gray: #e9ecef;
     --success: #28a745;
     --info: #17a2b8;
     --warning: #ffc107;
     --danger: #dc3545;
+    --white: #ffffff;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -34,27 +41,50 @@ body {
     position: relative;
 }
 
-.time-widget {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 10;
+/* ====== Typography ====== */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 15px;
+    color: var(--darker);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+/* ====== Header & Navigation ====== */
 header {
     text-align: center;
     margin-bottom: 30px;
     animation: fadeInDown 1s ease;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #4e54c8, #8f94fb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header p {
@@ -63,11 +93,10 @@ header p {
     opacity: 0.8;
 }
 
-/* Navigation Styles */
 nav {
-    background: white;
+    background: var(--white);
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow);
     margin-bottom: 30px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -100,18 +129,18 @@ nav a {
     display: flex;
     align-items: center;
     padding: 10px 15px;
-    text-decoration: none;
     color: var(--dark);
     font-weight: 500;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     position: relative;
     overflow: hidden;
 }
 
 nav a:hover, nav a.active {
     background: linear-gradient(to right, var(--primary), var(--secondary));
-    color: white;
+    color: var(--white);
+    text-decoration: none;
 }
 
 nav a::after {
@@ -124,7 +153,7 @@ nav a::after {
     background: var(--primary);
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.3s ease;
+    transition: var(--transition);
 }
 
 nav a:hover::after, nav a.active::after {
@@ -151,19 +180,84 @@ nav a.active .nav-icon, nav a:hover .nav-icon {
 
 .nav-btn {
     background: var(--primary);
-    color: white;
+    color: var(--white);
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .nav-btn:hover {
     background: var(--secondary);
 }
 
-/* Calendar Info Sections */
+/* ====== Common Components ====== */
+.card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: var(--white);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 84, 200, 0.4);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: var(--white);
+}
+
+/* ====== Home Page Specific ====== */
+.home-tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.tool-card {
+    text-align: center;
+}
+
+.tool-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+/* ====== Calendar Page Specific ====== */
 .calendar-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -172,15 +266,10 @@ nav a.active .nav-icon, nav a:hover .nav-icon {
 }
 
 .info-section {
-    background: white;
-    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .info-section h3 {
-    color: var(--primary);
-    margin-bottom: 15px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -188,11 +277,6 @@ nav a.active .nav-icon, nav a:hover .nav-icon {
 
 .info-section i {
     color: var(--accent);
-}
-
-.info-section p {
-    margin-bottom: 15px;
-    line-height: 1.7;
 }
 
 .info-section ul {
@@ -210,60 +294,11 @@ nav a.active .nav-icon, nav a:hover .nav-icon {
     unicode-bidi: embed;
 }
 
-/* Tool Container */
-.tool-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 1s ease;
-    margin-bottom: 30px;
-}
-
-.tool-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-.tool-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-}
-
-.tool-header-icon {
-    width: 32px;
-    height: 32px;
-    margin-right: 15px;
-}
-
-.tool-header h2 {
-    font-size: 1.8rem;
-    color: var(--primary);
-}
-
-.widget {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* Upcoming Events */
 .upcoming-events {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    margin-bottom: 30px;
 }
 
 .upcoming-events h3 {
-    color: var(--primary);
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -273,14 +308,40 @@ nav a.active .nav-icon, nav a:hover .nav-icon {
     color: var(--accent);
 }
 
+/* ====== Tool Containers ====== */
+.tool-container {
+    padding: 30px;
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.tool-header-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 15px;
+}
+
+.widget {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* ====== Advertisement ====== */
 .ad-container {
     width: 100%;
     margin: 30px 0;
     text-align: center;
-    background: white;
+    background: var(--white);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow);
 }
 
 .ad-container h3 {
@@ -307,6 +368,23 @@ nav a.active .nav-icon, nav a:hover .nav-icon {
     max-width: 970px;
 }
 
+/* ====== Breadcrumbs ====== */
+.breadcrumbs {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.breadcrumbs a {
+    color: var(--primary);
+}
+
+.breadcrumbs span {
+    color: var(--dark);
+    opacity: 0.7;
+}
+
+/* ====== Contact & Footer ====== */
 .contact-info {
     display: flex;
     justify-content: center;
@@ -317,11 +395,12 @@ nav a.active .nav-icon, nav a:hover .nav-icon {
 .contact-info a {
     color: var(--dark);
     font-size: 1.5rem;
-    transition: color 0.3s ease;
+    transition: var(--transition);
 }
 
 .contact-info a:hover {
     color: var(--primary);
+    text-decoration: none;
 }
 
 footer {
@@ -333,28 +412,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Breadcrumbs */
-.breadcrumbs {
-    padding: 10px 0;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-}
-
-.breadcrumbs a {
-    color: var(--primary);
-    text-decoration: none;
-}
-
-.breadcrumbs a:hover {
-    text-decoration: underline;
-}
-
-.breadcrumbs span {
-    color: var(--dark);
-    opacity: 0.7;
-}
-
-/* Animations */
+/* ====== Animations ====== */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -382,31 +440,36 @@ footer {
     }
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
+/* ====== Responsive Styles ====== */
+@media (max-width: 992px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
     }
     
     .calendar-info {
         grid-template-columns: 1fr;
     }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .home-tools {
+        grid-template-columns: 1fr;
+    }
     
     .tool-container, .upcoming-events {
         padding: 20px;
-    }
-    
-    .tool-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .contact-info {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .ad-placeholder.large {
-        height: 180px;
     }
     
     .nav-controls {
@@ -428,14 +491,26 @@ footer {
         margin-right: 5px;
     }
     
-    .time-widget {
-        position: static;
-        text-align: center;
-        margin-bottom: 15px;
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .ad-placeholder.large {
+        height: 180px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
     nav a {
         padding: 8px 10px;
     }
@@ -448,7 +523,12 @@ footer {
         padding: 15px;
     }
     
-    .info-section h3 {
-        font-size: 1.1rem;
+    .card {
+        padding: 20px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
     }
 }
